@@ -1,3 +1,27 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :api do
+  get "users/index"
+  get 'users/show'
+  get 'users/update'
+  get 'users/destroy'
+  get 'comments/index'
+  get 'comments/update'
+  get 'comments/destroy'
+  get 'api/index'
+  get 'api/destroy'
+  get 'activities/index'
+  get 'activities/show'
+  end
+    namespace :api do
+      resources :cities do
+        resources :activities
+        resources :comments do
+        end
+      end
+    end
 end
+  
+
+
+
+
