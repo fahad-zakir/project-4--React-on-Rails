@@ -31,8 +31,9 @@ class Home extends Component {
             return <div>{this.state.error}</div>
         }
         return (
-            // <Background>
+            <Background>
                 <div>
+
                     {this.state.cities.map(city => (
                         <Link to={`/cities/${city.id}`}>
                             <city key={city.id}>
@@ -42,42 +43,59 @@ class Home extends Component {
                         </Link>
                     ))}
                 </div>
-            // </Background>
+            </Background>
         )
     }
 }
 
 export default Home
 
-const city = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    flex-direction: row;
+    const city = styled.div`
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: row;
+    `
+
+const Background = styled.div`
+ position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-image: -webkit-linear-gradient(#fff, rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(#fff, rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(#fff, rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(#fff, rgba(255, 255, 255, 0));
+  background-image: linear-gradient(#fff, rgba(255, 255, 255, 0));
+  -webkit-background-size: 100% 900px;
+  -moz-background-size: 100% 900px;
+  background-size: 100% 900px;
+  background-repeat: no-repeat;
+  font-size: 62.5%;
+  color: #6f7c82;
+  font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial;
+  font-weight: 400;
+  font-style: normal;
+  overflow-x: hidden;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  background-color: #0e295e;
+  background-image: -webkit-radial-gradient(circle farthest-side at right bottom, #274889 0, #274889 34%, #0e295e 100%);
+  background-image: -moz-radial-gradient(circle farthest-side at right bottom, #274889 0, #274889 34%, #0e295e 100%);
+  background-image: -o-radial-gradient(circle farthest-side at right bottom, #274889 0, #274889 34%, #0e295e 100%);
+  background-image: -ms-radial-gradient(circle farthest-side at right bottom, #274889 0, #274889 34%, #0e295e 100%);
+  background-image: radial-gradient(circle farthest-side at right bottom, #274889 0, #274889 34%, #0e295e 100%);
+}
+
+div#main {
+  padding: 0 10px;
+
 `
-
-// const Background = styled.div`
-//   width: 100%;
-//   position: absolute;
-//   background: linear-gradient(270deg, #003366, #b27000, #06617d, #067370);
-//   background-size: 800% 800%;
-//   -webkit-animation: colors 30s ease infinite;
-//   -moz-animation: colors 30s ease infinite;
-//   animation: colors 30s ease infinite;
-
-// @-webkit-keyframes colors {
-//   0%{background-position:0% 50%}
-//   50%{background-position:100% 50%}
-//   100%{background-position:0% 50%}
-// }
-// @-moz-keyframes colors {
-//   0%{background-position:0% 50%}
-//   50%{background-position:100% 50%}
-//   100%{background-position:0% 50%}
-// }
-// @keyframes colors { 
-//   0%{background-position:0% 50%}
-//   50%{background-position:100% 50%}
-//   100%{background-position:0% 50%}
-// }
-// `
