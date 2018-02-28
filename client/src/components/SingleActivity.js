@@ -18,13 +18,13 @@ class SingleActivity extends Component {
         try {
 
             const cityId = this.props.match.params.cityId
-            console.log("passed city_url in the param", cityId)
+            //console.log("passed city_url in the param", cityId)
             const activityId = this.props.match.params.id
-            console.log("passed activity_url in the param", activityId)
+            //console.log("passed activity_url in the param", activityId)
 
             //Database call from above, response is the response from the axios call
             const response = await axios.get(`/api/cities/${cityId}/activities/${activityId}`)
-            console.log("response", response)
+           // console.log("response", response)
             // $cityId above is referring to the id above
             // / api / cities /: city_id/activities/: id(.: format)
 
@@ -49,17 +49,24 @@ class SingleActivity extends Component {
 
             //When making axios call's grab id's that you need from the url above 
             const cityId = this.props.match.params.cityId
-            console.log("grabbed city_url in the param", cityId)
+            //console.log("grabbed city_url in the param", cityId)
             const activityId = this.props.match.params.id
-            console.log("grabbed activity_url in the param", activityId)
+            //console.log("grabbed activity_url in the param", activityId)
 
             const response = await axios.get(`/api/cities/${cityId}/activities/${activityId}/comments`)
             console.log("comment response", response)
             // api/cities  city_id / activities  activity_id / comments
             // const response = await axios.get('/api/cities')
 
+            const allComments = response.data
+
+            const oneComment = allComments.filter((comment) => {
+                return comment.activity_id == activityId
+            })
+
+
             this.setState({
-                comments: response.data
+                comments: oneComment
             })
 
 
@@ -82,7 +89,16 @@ class SingleActivity extends Component {
          {this.state.activity.summary}
          {this.state.activity.age_requirement}
          {this.state.activity.admission_cost}
-         {this.state.comments}
+            <br/>
+            <br/>
+         {
+             this.state.comments.map((comment) => {
+                 return (
+                     comment.body
+                 )
+             })
+         }
+         
         </div>
     )
 }
