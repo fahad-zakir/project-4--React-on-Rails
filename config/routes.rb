@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   end
     namespace :api do
       resources :cities do
-        resources :activities
-        resources :comments do
+        resources :activities do
+          resources :comments 
         end
       end
     end

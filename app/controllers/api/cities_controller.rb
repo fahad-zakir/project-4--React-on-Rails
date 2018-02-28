@@ -35,5 +35,7 @@ class Api::CitiesController < ApplicationController
     def city_params
         params.require(:city).permit(:name, :photo_url, :summary, :latitude, :longitude, :state, :country, :nickname, :population, :city_type)
     end
+    # the params is connected to the above params
+    #private is for allowing a create or update, we will let them change what's inside the parenthesis
   
 end

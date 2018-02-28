@@ -1,9 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Oswald',
-  sans-serif;
-
+  font-family: 'Oswald', sans-serif;
 }
 
 .header-title {
@@ -29,18 +27,16 @@ body {
 }
 
 .city-name {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  margin-top: 20px;
   transform: translate(-50%, -50%);
-  color: #FFC476;
+  color: rgb(2, 2, 2);
   font-size: 60px;
 }
 
 .city-img {
-  top: 50%;
-  /* left: 50%; */
-  transform: translate(0, -25%);
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
 }
 
 .city-container {
@@ -62,21 +58,20 @@ body {
 }
 
 .city-button {
-    border: 1px solid black;
-    max-width: 250px;
-    min-width: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    transition: all 0.25s ease;
-    background: #ffb10a;
-    text-decoration: none;
+  border: 1px solid black;
+  max-width: 250px;
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  transition: all 0.25s ease;
+  background: #ffb10a;
+  text-decoration: none;
 }
 
 .city-button:hover {
   background-color: rgb(38, 52, 247);
-  
   color: white;
 }
 
@@ -89,25 +84,24 @@ body {
   align-items: center;
   height: 40px;
   transition: all 0.25s ease;
-  background : rgb(38, 52, 247);
+  background: rgb(38, 52, 247);
 }
 
 .city-button-2:hover {
   background-color: #ffb10a;
-  
   color: white;
 }
 
 .delete {
-    margin-bottom: 20px;
-    margin-left: 500px;
-    border: 1px solid black;
-    border-radius: 20%;
-    max-width: 100px;
-    min-width: 50px;
-    margin-top: 10px;
-    transition: all 0.25s ease;
-    background: rgb(247, 38, 38);
+  margin-bottom: 20px;
+  margin-left: 500px;
+  border: 1px solid black;
+  border-radius: 20%;
+  max-width: 100px;
+  min-width: 50px;
+  margin-top: 10px;
+  transition: all 0.25s ease;
+  background: rgb(247, 38, 38);
 }
 
 .edit {
@@ -136,7 +130,6 @@ body {
 
 .post-text {
   margin: 0px 500px 0px 500px;
-  
 }
 
 a {
@@ -149,7 +142,8 @@ a {
   justify-content: space-around;
 }
 
-.admin-new-city-side, .admin-city-list-side {
+.admin-new-city-side,
+.admin-city-list-side {
   width: 400px;
 }
 
@@ -162,8 +156,7 @@ a {
 
 .admin-page-button:focus {
   outline: none;
-  
-  }
+}
 
 .apb-e {
   background-color: orange;

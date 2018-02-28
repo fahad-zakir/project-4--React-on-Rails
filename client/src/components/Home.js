@@ -18,6 +18,8 @@ class Home extends Component {
             console.log('succesfully grabbed api data', response)
             await this.setState({ cities: response.data });
             return response.data;
+            // Response variable is storing data from api/cities, it uses axios to makes a call to get cities from the api
+            // save cities to const response, (await) tell's it to wait to get cities array first and then set the state
         }
         catch (err) {
             console.log(err)
@@ -33,12 +35,12 @@ class Home extends Component {
         return (
             <Background>
                 <div>
-
                     {this.state.cities.map(city => (
                         <Link to={`/cities/${city.id}`}>
-                            <city key={city.id}>
+                            <city key={city.id} className="city-preview">
                                 <img src={city.photo_url} alt="picture of city" className="city-img" />
-                                <city-name>{city.name}</city-name>
+
+                            <div className="city-name" >{city.name}</div>
                             </city>
                         </Link>
                     ))}
@@ -49,13 +51,6 @@ class Home extends Component {
 }
 
 export default Home
-
-    const city = styled.div`
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        flex-direction: row;
-    `
 
 const Background = styled.div`
  position: fixed;

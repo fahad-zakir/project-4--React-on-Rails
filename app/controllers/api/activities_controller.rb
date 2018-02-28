@@ -8,12 +8,12 @@ class Api::ActivitiesController < ApplicationController
     end
 
     def show
-        @city = City.find(param[:city_id])
+        # @city = City.find(param[:city_id])
         @activity = Activity.find(params[:id])
 
-        @response = {city: @city, activity: @activity}
+        # @response = {city: @city, activity: @activity}
 
-        render json: @response
+        render json: @activity
     end
 
 end

@@ -3,9 +3,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import ActivityList from './ActivityList'
-
-
 
 
 export default class CityPage extends Component {
@@ -13,21 +10,20 @@ export default class CityPage extends Component {
         city: {},
         activities: [],
     }
-    //Tell's us that we are going to grab the above information first, like the array's etc.
     componentWillMount = () => {
-            this.showCity()
-        //params will take the i.d from above url: city.id match it
-        
-        // await tell's it to wait to get cityId info first and then set the state
+        this.showCity()
+
     }
 
     showCity = async () => {
         try {
             //1st call to the database, cityId will be the id from above url that belong's to that city
+            //params will take the i.d from above url: city.id match it
             const cityId = this.props.match.params.id
 
             //Database call
             const response = await axios.get(`/api/cities/${cityId}`)
+            // await tell's it to wait to get cityId info first and then set the state
             // cityId is getting the params from the url and passing it down and saving
             // to the const below and looking it up through the cityId
 
@@ -40,11 +36,11 @@ export default class CityPage extends Component {
 
             const oneActivity = specificActivity.filter((activity) => {
                 return activity.city_id == cityId
-            // get the specificActivity and filter it to match the current city-id
+                // get the specificActivity and filter it to match the current city-id, to loop through an array
             })
 
-            console.log ("Activities went through", allActivities)
-            
+            console.log("Activities went through", allActivities)
+
             this.setState({
                 city: response.data,
                 //(this.setState is when you are ready to make the change of the state)
@@ -59,34 +55,39 @@ export default class CityPage extends Component {
 
     render() {
         return (
-            <container>
-                <cityContainer>
-                    <CityImage src={this.state.city.photo_url} alt={this.state.city.name}></CityImage>
-                    <cityName>{this.state.city.name}</cityName>
+            <div className="container">
+                <div className="city-container">
+                    <div className="city-preview" >
+
+                        <img className="city-img" src={this.state.city.photo_url} alt={this.state.city.name} />
+                        <div className="city-name" >{this.state.city.name}</div>
+                    </div>
                     <cityPopulation>Population: {this.state.city.population}</cityPopulation>
-                    <citySummary>Summary: {this.state.city.summary}</citySummary>
+                    <div className="city-stats-text">
+                    {this.state.city.summary}   
+                    </div>
                     <div>
                     </div>
                     <buttonDiv>
                         <Link to="/"><citiesButton type="button">Back to Cities</citiesButton></Link>
                     </buttonDiv>
-                </cityContainer>
+                </div>
 
                 <activityContainer>
                     {this.state.activities.map(activity => (
-                        <Link to={`/cities/${activity.id}`}>
+                        <Link to={`/cities/${activity.city_id}/activities/${activity.id}`}>
 
                             <city key={activity.id}>
-                                <img src={activity.photo_url} alt="picture of city" className="city-img" />
+                                <img src={activity.photo_url} onClick alt="picture of city" className="city-img" />
                                 <city-name>{activity.name}</city-name>
                             </city>
                         </Link>
-                        
+
                     ))}
                 </activityContainer>
-          
 
-            </container>
+
+            </div>
 
 
         )

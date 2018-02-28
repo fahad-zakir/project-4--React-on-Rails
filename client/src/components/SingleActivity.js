@@ -1,100 +1,91 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
+import React, { Component } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 class SingleActivity extends Component {
-
     state = {
-        activityToChange: {
-
-        },
-        pageNotReady: true,
-        editActivityFormShowing: false
-    }
-
-    toggleEditActivityForm = () => {
-        const editActivityFormShowing = !this.state.editActivityFormShowing
-        this.setState({
-            editActivityFormShowing
-        })
-    }
-
+        activity: {},
+        comments: [],
+    }   
     componentWillMount = () => {
-        console.log(this.props.activity)
-        this.setState({ activityToChange: this.props.activity, pageNotReady: false })
+        this.showActivity()
+        this.showComment()
+
     }
+    
+    showActivity = async () => {
+        try {
 
-    handleEditActivityChange = (event) => {
-        console.log(this.state.activityToChange)
+            const cityId = this.props.match.params.cityId
+            console.log("passed city_url in the param", cityId)
+            const activityId = this.props.match.params.id
+            console.log("passed activity_url in the param", activityId)
 
-        const newActivity = { ...this.state.activityToChange }
-        newActivity[event.target.name] = event.target.value
+            //Database call from above, response is the response from the axios call
+            const response = await axios.get(`/api/cities/${cityId}/activities/${activityId}`)
+            console.log("response", response)
+            // $cityId above is referring to the id above
+            // / api / cities /: city_id/activities/: id(.: format)
 
-        this.setState({ activityToChange: newActivity })
+            this.setState({
+                activity: response.data
+                // now that we are ready to change the state which was just integers (id's from url)
+                // we want to grab the data which was saved in the variable response above and
+                // we to change the state of that data because we don't need everything that it gives you like timestamps..
+
+            })
+
+        }
+            //if that fails print err from console
+        catch (err) {
+            console.log(err)
+        }
     }
-    updateActivity = (event) => {
-        event.preventDefault()
-        this.props.editActivity(this.state.activityToChange)
-        this.toggleEditActivityForm()
-    }
+    
 
-    handleClick = () => {
+    showComment = async () => {
+        try {
 
-        if (window.confirm(`Are you sure you want to delete ${this.props.title}?`)) {
-            this.props.deleteActivity(this.props.activity.id)
+            //When making axios call's grab id's that you need from the url above 
+            const cityId = this.props.match.params.cityId
+            console.log("grabbed city_url in the param", cityId)
+            const activityId = this.props.match.params.id
+            console.log("grabbed activity_url in the param", activityId)
+
+            const response = await axios.get(`/api/cities/${cityId}/activities/${activityId}/comments`)
+            console.log("comment response", response)
+            // api/cities  city_id / activities  activity_id / comments
+            // const response = await axios.get('/api/cities')
+
+            this.setState({
+                comments: response.data
+            })
+
+
+        }
+        catch (err) {
+            console.log(err)
         }
     }
 
-    render() {
-
-        return (
-            <div>
-                {/* {this.state.pageNotReady ? */}
-                {/* <div>test true </div> : */}
-                <div >
-                    <img className="ImageActivity" width="300" src={this.props.activity_photo} alt="" />
-                    <div className="activity-title">{this.props.title}</div>
-                    <div className="activity-text">{this.props.body}</div>
-                    <div>
-                        <button className="delete" type="submit" onClick={this.handleClick}>Delete</button>
-
-                        <button className="edit" onClick={this.toggleEditActivityForm}>
-                            Edit Activity
-                            </button>
-                    </div>
-                    <div>
-                        <div className="activity-text">
-                            {this.state.editActivityFormShowing ?
-                                <form onSubmit={this.updateActivity}>
-
-                                    <div>
-                                        <label htmlFor="title">Title: </label>
-                                        <input onChange={this.handleEditActivityChange} name="title" type="text" value={this.state.activityToChange.title} />
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="body">Description: </label>
-                                        <input onChange={this.handleEditActivityChange} name="body" type="text" value={this.state.activityToChange.body} />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="body">Photo URL:</label>
-                                        <input onChange={this.handleEditActivityChange} name="activity_photo" type="text" value={this.state.activityToChange.activity_photo} />
-                                    </div>
-                                    <div>
-                                        <input className="edit" type="submit" value="Submit" />
-                                    </div>
-
-                                </form>
-                                : null
-                            }
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        )
-    }
+    render() { 
+    return (
+        <div>
+        <div className="city-name">
+         {this.state.activity.name}
+         </div>
+         <img className="city-img" src={this.state.activity.photo_url} alt={this.state.activity.name} />
+         <div className="">
+         {this.state.activity.activity_type}
+         </div>
+         {this.state.activity.summary}
+         {this.state.activity.age_requirement}
+         {this.state.activity.admission_cost}
+         {this.state.comments}
+        </div>
+    )
 }
-
+}
 export default SingleActivity;
 
