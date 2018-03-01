@@ -1,27 +1,27 @@
 import React from "react";
 import styled from "styled-components"
 
-function NewPostForm(props) {
+function NewCommentForm(props) {
     return (
         <div>
             <div>
-                <form onSubmit={props.createNewPost}>
+                <form onSubmit={props.createNewComment}>
                     <div>
                         <label htmlFor="title">Title:</label>
                     </div>
                     <div>
-                        <input onChange={props.handlePostChange} name="title" value={props.post.title} />
+                        <input onChange={props.handleCommentChange} name="title" value={props.comment.title} />
                     </div>
                     <div>
                         <label htmlFor="body">Description: </label>
                     </div>
                     <div>
-                        <input onChange={props.handlePostChange} name="body" maxLength="30" value={props.post.body} />
+                        <input onChange={props.handleCommentChange} name="body" maxLength="30" value={props.comment.body} />
                     </div>
                     <div>
-                        <label htmlFor="post_photo">Photo URL:</label>
+                        <label htmlFor="comment_photo">Photo URL:</label>
                         <div>
-                            <input onChange={props.handlePostChange} name="post_photo" type="text" value={props.post_photo} />
+                            <input onChange={props.handleCommentChange} name="comment_photo" type="text" value={props.comment_photo} />
                         </div>
                     </div>
 
@@ -34,4 +34,4 @@ function NewPostForm(props) {
     )
 }
 
-export default NewPostForm;
+export default NewCommentForm;

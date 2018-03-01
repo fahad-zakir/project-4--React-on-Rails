@@ -17,7 +17,7 @@ export default class CityPage extends Component {
 
     showCity = async () => {
         try {
-            //1st call to the database, cityId will be the id from above url that belong's to that city
+            //Aysnc call to the database, cityId will be the id from above url that belong's to that city
             //params will take the i.d from above url: city.id match it
             const cityId = this.props.match.params.id
 
@@ -62,7 +62,7 @@ export default class CityPage extends Component {
                         <img className="city-img" src={this.state.city.photo_url} alt={this.state.city.name} />
                         <div className="city-name" >{this.state.city.name}</div>
                     </div>
-                    <cityPopulation>Population: {this.state.city.population}</cityPopulation>
+                    <div className="city-stats-text">Population: {this.state.city.population}</div>
                     <div className="city-stats-text">
                     {this.state.city.summary}   
                     </div>
@@ -73,18 +73,22 @@ export default class CityPage extends Component {
                     </buttonDiv>
                 </div>
 
-                <activityContainer>
+                <div className= "city-container">
                     {this.state.activities.map(activity => (
                         <Link to={`/cities/${activity.city_id}/activities/${activity.id}`}>
 
                             <city key={activity.id}>
+                                <div className="city-box"> 
+
                                 <img src={activity.photo_url} onClick alt="picture of city" className="city-img" />
                                 <city-name>{activity.name}</city-name>
+                                    </div>
+
                             </city>
                         </Link>
 
                     ))}
-                </activityContainer>
+                </div>
 
 
             </div>
@@ -95,73 +99,3 @@ export default class CityPage extends Component {
 }
 
 
-const cityPopulation = styled.div`
-    font-size:45px;
-`
-
-const CityImage = styled.img`
-    width: 40vw;
-    height: 400px;
-    margin: 15px auto;
-    overflow: hidden;
-    position: relative;
-`
-
-const cityName = styled.div`
-    margin-right: 50px;
-`
-
-// const city = styled.div`
-//         display: flex;
-//         flex-wrap: wrap;
-//         justify-content: center;
-//         flex-direction: row;
-//     `
-
-//     .container {
-//     width: 100 %;
-//     display: flex;
-//     flex - direction: column;
-//     align - items: center;
-// }
-
-// .city - container {
-//     width: 100 %;
-//     height: 400px;
-//     display: flex;
-//     align - items: center;
-//     justify - content: space - between;
-// }
-// .city - preview {
-//     width: 60vw;
-//     height: 400px;
-//     margin: 15px auto;
-//     overflow: hidden;
-//     position: relative;
-//     text - align: center;
-// }
-// .city - img {
-//     top: 50 %;
-//     /* left: 50%; */
-//     transform: translate(0, -25 %);
-// }
-// .city - name {
-//     position: absolute;
-//     top: 50 %;
-//     left: 50 %;
-//     transform: translate(-50 %, -50 %);
-//     color: #FFC476;
-//     font - size: 60px;
-// }
-// .city - button {
-//     border: 1px solid black;
-//     max - width: 250px;
-//     min - width: 150px;
-//     display: flex;
-//     justify - content: center;
-//     align - items: center;
-//     height: 40px;
-//     transition: all 0.25s ease;
-//     background: #ffb10a;
-//     text - decoration: none;
-// }

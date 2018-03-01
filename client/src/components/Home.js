@@ -33,16 +33,18 @@ class Home extends Component {
             return <div>{this.state.error}</div>
         }
         return (
-            <Background>
-                <div>
+   <Background> 
+                <h1>FamTime</h1>
+                <div className="city-preview">
                     {this.state.cities.map(city => (
-                        <Link to={`/cities/${city.id}`}>
-                            <city key={city.id} className="city-preview">
-                                <img src={city.photo_url} alt="picture of city" className="city-img" />
-
-                            <div className="city-name" >{city.name}</div>
-                            </city>
-                        </Link>
+                    <Link to={`/cities/${city.id}`}>
+                        <div key={city.id}  >
+                        <div className="city-box"> 
+                            <img src={city.photo_url} alt="picture of city" className="city-img" />
+                            <div >{city.name}</div>
+                                </div>
+                        </div>
+                    </Link>
                     ))}
                 </div>
             </Background>
@@ -53,44 +55,5 @@ class Home extends Component {
 export default Home
 
 const Background = styled.div`
- position: fixed;
-  width: 100%;
-  height: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  background-image: -webkit-linear-gradient(#fff, rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(#fff, rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(#fff, rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(#fff, rgba(255, 255, 255, 0));
-  background-image: linear-gradient(#fff, rgba(255, 255, 255, 0));
-  -webkit-background-size: 100% 900px;
-  -moz-background-size: 100% 900px;
-  background-size: 100% 900px;
-  background-repeat: no-repeat;
-  font-size: 62.5%;
-  color: #6f7c82;
-  font-family: 'Whitney SSm A', 'Whitney SSm B', Helvetica, Arial;
-  font-weight: 400;
-  font-style: normal;
-  overflow-x: hidden;
-  padding: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  background-color: #0e295e;
-  background-image: -webkit-radial-gradient(circle farthest-side at right bottom, #274889 0, #274889 34%, #0e295e 100%);
-  background-image: -moz-radial-gradient(circle farthest-side at right bottom, #274889 0, #274889 34%, #0e295e 100%);
-  background-image: -o-radial-gradient(circle farthest-side at right bottom, #274889 0, #274889 34%, #0e295e 100%);
-  background-image: -ms-radial-gradient(circle farthest-side at right bottom, #274889 0, #274889 34%, #0e295e 100%);
-  background-image: radial-gradient(circle farthest-side at right bottom, #274889 0, #274889 34%, #0e295e 100%);
-}
-
-div#main {
-  padding: 0 10px;
-
+ 
 `

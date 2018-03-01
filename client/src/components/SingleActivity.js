@@ -32,7 +32,7 @@ class SingleActivity extends Component {
                 activity: response.data
                 // now that we are ready to change the state which was just integers (id's from url)
                 // we want to grab the data which was saved in the variable response above and
-                // we to change the state of that data because we don't need everything that it gives you like timestamps..
+                // we to change the state of that data because we don't need everything that it gives you like timestamps etc...
 
             })
 
@@ -55,7 +55,6 @@ class SingleActivity extends Component {
 
             const response = await axios.get(`/api/cities/${cityId}/activities/${activityId}/comments`)
             console.log("comment response", response)
-            // api/cities  city_id / activities  activity_id / comments
             // const response = await axios.get('/api/cities')
 
             const allComments = response.data
@@ -82,7 +81,7 @@ class SingleActivity extends Component {
         <div className="city-name">
          {this.state.activity.name}
          </div>
-         <img className="city-img" src={this.state.activity.photo_url} alt={this.state.activity.name} />
+         <img className="city-img-2" src={this.state.activity.photo_url} alt={this.state.activity.name} />
          <div className="">
          {this.state.activity.activity_type}
          </div>
