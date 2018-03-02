@@ -2,21 +2,43 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import NewCommentForm from './NewCommentForm'
 
 class SingleActivity extends Component {
     state = {
         activity: {},
         comments: [],
+        newCommentFormShowing: false
     }   
+    //Component will mount will say before the page runs, run the functions below like showActivity and showComment
     componentWillMount = () => {
         this.showActivity()
         this.showComment()
-
     }
+
+
+
+    // createNewPost = async (event) => {
+    //     event.preventDefault()
+    //     const cityId = this.props.match.params.id
+    //     const payload = {
+    //         title: this.state.post.title,
+    //         body: this.state.post.body,
+    //         city_id: cityId,
+    //         post_photo: this.state.post.post_photo,
+    //         user_id: '1'
+    //     }
+    //     console.log(payload)
+    //     const blankForm = {}
+    //     await axios.post(`/api/cities/${this.props.match.params.id}/posts`, payload)
+    //     await this.getCity()
+    //     this.setState({
+    //         newPostFormShowing: false,
+    //         post: blankForm
+    //     })
     
     showActivity = async () => {
         try {
-
             const cityId = this.props.match.params.cityId
             //console.log("passed city_url in the param", cityId)
             const activityId = this.props.match.params.id
@@ -42,6 +64,12 @@ class SingleActivity extends Component {
             console.log(err)
         }
     }
+    toggleNewCommentForm = () => {
+        const newCommentFormShowing = !this.state.newCommentFormShowing
+        this.setState({
+            newCommentFormShowing
+        })
+    }
     
 
     showComment = async () => {
@@ -63,11 +91,9 @@ class SingleActivity extends Component {
                 return comment.activity_id == activityId
             })
 
-
             this.setState({
                 comments: oneComment
             })
-
 
         }
         catch (err) {
@@ -89,8 +115,18 @@ class SingleActivity extends Component {
          </div>
          <div>
          <h3 className="cost">Cost</h3>
+                   
          {this.state.activity.admission_cost}
          </div>
+            <buttonDiv>
+                <button type="button" onClick={this.toggleNewCommentForm}>Add New</button>
+            </buttonDiv>
+
+            {
+                    this.state.newCommentFormShowing ? <NewCommentForm /> : null
+            }
+            
+            
             <br/>
             <br/>
          {
@@ -100,6 +136,7 @@ class SingleActivity extends Component {
                      comment.body
                  )
              })
+
          }
          
         </div>
