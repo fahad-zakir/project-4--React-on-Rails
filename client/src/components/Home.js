@@ -33,8 +33,9 @@ class Home extends Component {
             return <div>{this.state.error}</div>
         }
         return (
+            <div className="new">
    <Background> 
-                <h1 className="title">FamTime</h1>
+            <h1 className="title">FamTime</h1>
                 <div className="city-preview">
                     {this.state.cities.map(city => (
                     <Link to={`/cities/${city.id}`}>
@@ -48,6 +49,7 @@ class Home extends Component {
                     ))}
                 </div>
             </Background>
+            </div>
         )
     }
 }
@@ -55,6 +57,15 @@ class Home extends Component {
 export default Home
 
 const Background = styled.div`
- background-image:url('http://guoguiyan.com/family-wallpapers/68430849.html')
+
+ 
+background: rgb(105,155,200);
+background: -moz-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%, rgba(181,197,216,1) 57%);
+ background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%,rgba(105,155,200,1)), color-stop(57%,rgba(181,197,216,1)));
+ background: -webkit-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+ background: -o-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+ background: -ms-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+ background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#699bc8', endColorstr='#b5c5d8',GradientType=1 );
 
 `

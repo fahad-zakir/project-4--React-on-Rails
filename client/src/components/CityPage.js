@@ -55,16 +55,18 @@ export default class CityPage extends Component {
 
     render() {
         return (
+            <Background>
             <div className="container">
                 <div className="city-container">
-                    <div className="city-preview" >
+                    <div className="city-preview-2" >
 
                         <img className="city-img-2" src={this.state.city.photo_url} alt={this.state.city.name} />
                         <div className="city-name">
-                        {this.state.city.name}
+                            {this.state.city.name}
                         </div>
                     </div>
-                    <div className="city-stats-text">
+                 
+                    <div className="city-stats-text-2">
                     {this.state.city.summary}   
                     </div>
                     <div>
@@ -82,7 +84,7 @@ export default class CityPage extends Component {
                                 <div className="city-box-2"> 
 
                                 <img src={activity.photo_url} onClick alt="picture of city" className="city-img-3" />
-                                <city-name>{activity.name}</city-name>
+                                <div className="city-name-2">{activity.name}</div>
                                     </div>
 
                             </city>
@@ -93,10 +95,15 @@ export default class CityPage extends Component {
 
 
             </div>
+            </Background>
 
 
         )
     }
 }
 
+const Background = styled.div`
 
+background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+
+`

@@ -77,6 +77,7 @@ class SingleActivity extends Component {
 
     render() { 
     return (
+        <Background>
         <div>
         
          <img className="single-img" src={this.state.activity.photo_url} alt={this.state.activity.name} />
@@ -87,6 +88,7 @@ class SingleActivity extends Component {
          {this.state.activity.age_requirement}
          </div>
          <div>
+         <h3 className="cost">Cost</h3>
          {this.state.activity.admission_cost}
          </div>
             <br/>
@@ -94,14 +96,30 @@ class SingleActivity extends Component {
          {
              this.state.comments.map((comment) => {
                  return (
+                     
                      comment.body
                  )
              })
          }
          
         </div>
+        </Background>
     )
 }
 }
 export default SingleActivity;
+
+const Background = styled.div`
+
+ 
+background: rgb(105,155,200);
+background: -moz-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%, rgba(181,197,216,1) 57%);
+ background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%,rgba(105,155,200,1)), color-stop(57%,rgba(181,197,216,1)));
+ background: -webkit-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+ background: -o-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+ background: -ms-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+ background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#699bc8', endColorstr='#b5c5d8',GradientType=1 );
+
+`
 
