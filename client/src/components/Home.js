@@ -34,7 +34,7 @@ class Home extends Component {
         }
         return (
    <Background> 
-                <h1>FamTime</h1>
+                <h1 className="title">FamTime</h1>
                 <div className="city-preview">
                     {this.state.cities.map(city => (
                     <Link to={`/cities/${city.id}`}>
@@ -55,5 +55,6 @@ class Home extends Component {
 export default Home
 
 const Background = styled.div`
- 
+ background-image:url('http://guoguiyan.com/family-wallpapers/68430849.html')
+
 `

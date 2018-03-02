@@ -59,10 +59,11 @@ export default class CityPage extends Component {
                 <div className="city-container">
                     <div className="city-preview" >
 
-                        <img className="city-img" src={this.state.city.photo_url} alt={this.state.city.name} />
-                        <div className="city-name" >{this.state.city.name}</div>
+                        <img className="city-img-2" src={this.state.city.photo_url} alt={this.state.city.name} />
+                        <div className="city-name">
+                        {this.state.city.name}
+                        </div>
                     </div>
-                    <div className="city-stats-text">Population: {this.state.city.population}</div>
                     <div className="city-stats-text">
                     {this.state.city.summary}   
                     </div>
@@ -78,9 +79,9 @@ export default class CityPage extends Component {
                         <Link to={`/cities/${activity.city_id}/activities/${activity.id}`}>
 
                             <city key={activity.id}>
-                                <div className="city-box"> 
+                                <div className="city-box-2"> 
 
-                                <img src={activity.photo_url} onClick alt="picture of city" className="city-img" />
+                                <img src={activity.photo_url} onClick alt="picture of city" className="city-img-3" />
                                 <city-name>{activity.name}</city-name>
                                     </div>
 

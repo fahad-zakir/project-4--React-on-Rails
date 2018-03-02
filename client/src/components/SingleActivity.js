@@ -78,16 +78,17 @@ class SingleActivity extends Component {
     render() { 
     return (
         <div>
-        <div className="city-name">
-         {this.state.activity.name}
-         </div>
-         <img className="city-img-2" src={this.state.activity.photo_url} alt={this.state.activity.name} />
-         <div className="">
-         {this.state.activity.activity_type}
-         </div>
+        
+         <img className="single-img" src={this.state.activity.photo_url} alt={this.state.activity.name} />
+         <div>
          {this.state.activity.summary}
+         </div>
+         <div>
          {this.state.activity.age_requirement}
+         </div>
+         <div>
          {this.state.activity.admission_cost}
+         </div>
             <br/>
             <br/>
          {
