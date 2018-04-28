@@ -15,27 +15,6 @@ class SingleActivity extends Component {
         this.showActivity()
         this.showComment()
     }
-
-
-
-    // createNewPost = async (event) => {
-    //     event.preventDefault()
-    //     const cityId = this.props.match.params.id
-    //     const payload = {
-    //         title: this.state.post.title,
-    //         body: this.state.post.body,
-    //         city_id: cityId,
-    //         post_photo: this.state.post.post_photo,
-    //         user_id: '1'
-    //     }
-    //     console.log(payload)
-    //     const blankForm = {}
-    //     await axios.post(`/api/cities/${this.props.match.params.id}/posts`, payload)
-    //     await this.getCity()
-    //     this.setState({
-    //         newPostFormShowing: false,
-    //         post: blankForm
-    //     })
     
     showActivity = async () => {
         try {

@@ -7,9 +7,12 @@ class Home extends Component {
     state = {
         error: '',
         cities: []
+        //cities array 
     }
     componentWillMount() {
         this.fetchCities();
+    //Component will mount will say before the page runs, run the functions like this.fetchcities, (citty array).
+
     }
 
     fetchCities = async () => {
@@ -58,7 +61,11 @@ export default Home
 
 const Background = styled.div`
 
- 
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
 background: rgb(105,155,200);
 background: -moz-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%, rgba(181,197,216,1) 57%);
  background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%,rgba(105,155,200,1)), color-stop(57%,rgba(181,197,216,1)));

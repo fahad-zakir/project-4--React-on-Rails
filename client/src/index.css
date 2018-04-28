@@ -14,24 +14,7 @@
    bottom:0;
    color:#000033;
    font-size: 20px;
-  
-  
-}
-/* body::before{
- background-size: cover;
- background-repeat:no-repeat;
- background-image:url('http://www.guoguiyan.com/data/out/68/68430849-family-wallpapers.jpg')
-} */
-
-/* .header-title {
-  color: purple;
-  font-size: 24px;
-  margin-left: 20px;
-} */
-.new {
-
-}
-
+  }
 
 .title {
   display: flex;
@@ -52,7 +35,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 70vw;
+  
   text-align: center;
   text-decoration: none;
   color: white;
@@ -89,8 +72,23 @@
    width: 25vh;
    margin: 5px;
    border-radius: 10%;
+  -webkit-opacity: 0.25;
+  -moz-opacity: 0.25;
+  opacity: 0.25;
+  -webkit-transition: all 3s ease;
+  -moz-transition: all 3s ease;
+  -ms-transition: all 3s ease;
+  -o-transition: all 3s ease;
+  transition: all 3s ease;
   
-} 
+   }
+  .city-img:hover {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    opacity: 1;
+  }
+
+
 
 .city-img-2 {
   width: 45vh;
