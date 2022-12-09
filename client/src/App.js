@@ -6,8 +6,7 @@ import Home from './components/Home'
 import CityPage from './components/CityPage'
 import SingleActivity from './components/SingleActivity'
 
-class App extends Component {
-
+class App extends Component { 
 
   render() {
     return (
