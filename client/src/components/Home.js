@@ -87,7 +87,7 @@ const Background = styled.div`
     top left,
     ellipse cover,
     rgba(105, 155, 200, 1) 0%,
-    rgba(181, 197, 216, 1) 56%
+    rgba(181, 197, 216, 1) 57%
   );
   background: -o-radial-gradient(
     top left,
